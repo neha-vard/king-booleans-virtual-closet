@@ -1,10 +1,12 @@
-import {useState} from "react";
-import {storage} from "./firebaseConfig";
-import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
+import { useState } from "react";
+import { storage } from "./firebaseConfig";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
 function App() {
   // State to store uploaded file
   const [file, setFile] = useState(""); // progress
   const [percent, setPercent] = useState(0); // Handle file upload event and update state
+  const [url, setUrl] = useState("");
   function handleChange(event) {
     setFile(event.target.files[0]);
   }
@@ -26,17 +28,28 @@ function App() {
       () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
+          setUrl(url);
         });
-      }
+      },
     );
-  };
+
+  }
+
   return (
     <div>
       <input type="file" onChange={handleChange} accept="/image/*" />
       <button onClick={handleUpload}>Upload to Firebase</button>
       <p>{percent} "% done"</p>
-    </div>
+
+
+      <img src={url} alt="uploaded" />
+
+
+
+
+    </div >
+
+
   );
 }
 export default App;
