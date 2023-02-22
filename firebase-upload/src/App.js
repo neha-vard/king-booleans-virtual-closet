@@ -27,7 +27,8 @@ function App() {
       (err) => console.log(err),
       () => {
         // download url
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+        const starsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/files/download.jpg');
+        getDownloadURL(starsRef).then((url) => {
           setUrl(url);
         });
       },
@@ -41,11 +42,8 @@ function App() {
       <button onClick={handleUpload}>Upload to Firebase</button>
       <p>{percent} "% done"</p>
 
-
+      
       <img src={url} alt="uploaded" />
-
-
-
 
     </div >
 
