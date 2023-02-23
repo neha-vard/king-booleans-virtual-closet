@@ -7,10 +7,27 @@ function App() {
   const [file, setFile] = useState(""); // progress
   const [percent, setPercent] = useState(0); // Handle file upload event and update state
   const [url, setUrl] = useState("");
-  const starsRef = ref(storage, `/files/${file.name}`);
+  // const starsRef = ref(storage, `/files/${file.name}`);
+  const starsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/files/download.jpg');
   getDownloadURL(starsRef).then((url) => {
     setUrl(url);
   });
+
+  // const listRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/files');
+  // listAll(listRef)
+  // .then((res) => {
+  //   res.prefixes.forEach((folderRef) => {
+  //     // All the prefixes under listRef.
+  //     // You may call listAll() recursively on them.
+  //   });
+  //   res.items.forEach((itemRef) => {
+  //     // All the items under listRef.
+  //   });
+  // }).catch((error) => {
+  //   // Uh-oh, an error occurred!
+  // });
+
+
   
   function handleChange(event) {
     setFile(event.target.files[0]);
