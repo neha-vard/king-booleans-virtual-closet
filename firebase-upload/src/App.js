@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { storage } from "./firebaseConfig";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL, listAll} from "firebase/storage";
 
 function App() {
   // State to store uploaded file
@@ -12,8 +12,7 @@ function App() {
   getDownloadURL(starsRef).then((url) => {
     setUrl(url);
   });
-
-  // const listRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/files');
+  
   // listAll(listRef)
   // .then((res) => {
   //   res.prefixes.forEach((folderRef) => {
@@ -26,6 +25,21 @@ function App() {
   // }).catch((error) => {
   //   // Uh-oh, an error occurred!
   // });
+
+
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    const listRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/files');
+    listAll(listRef)
+      .then(async (res) => {
+        setItems(await Promise.all(res.items.map(item => getDownloadURL(item))));
+      })
+      .catch((error) => {
+        console.log(error);
+        // Uh-oh, an error occurred!
+
+      });
+  }, []);
 
 
   
@@ -47,13 +61,6 @@ function App() {
         setPercent(percent);
       },
       (err) => console.log(err),
-      // () => {
-      //   // download url
-      //   const starsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/files/download.jpg');
-      //   getDownloadURL(starsRef).then((url) => {
-      //     setUrl(url);
-      //   });
-      // },
     );
 
   }
@@ -66,6 +73,8 @@ function App() {
       <p>{percent} "% done"</p>
   
       <img src={url} alt="uploaded"  />
+
+      {items.map((item, i) => <img src={item} alt="this" key={i}/>)}
 
     </div >
 
