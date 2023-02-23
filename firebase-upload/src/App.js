@@ -7,6 +7,11 @@ function App() {
   const [file, setFile] = useState(""); // progress
   const [percent, setPercent] = useState(0); // Handle file upload event and update state
   const [url, setUrl] = useState("");
+  const starsRef = ref(storage, `/files/${file.name}`);
+  getDownloadURL(starsRef).then((url) => {
+    setUrl(url);
+  });
+  
   function handleChange(event) {
     setFile(event.target.files[0]);
   }
@@ -25,25 +30,25 @@ function App() {
         setPercent(percent);
       },
       (err) => console.log(err),
-      () => {
-        // download url
-        const starsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/files/download.jpg');
-        getDownloadURL(starsRef).then((url) => {
-          setUrl(url);
-        });
-      },
+      // () => {
+      //   // download url
+      //   const starsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/files/download.jpg');
+      //   getDownloadURL(starsRef).then((url) => {
+      //     setUrl(url);
+      //   });
+      // },
     );
 
   }
-
+  
   return (
     <div>
       <input type="file" onChange={handleChange} accept="/image/*" />
+
       <button onClick={handleUpload}>Upload to Firebase</button>
       <p>{percent} "% done"</p>
-
-      
-      <img src={url} alt="uploaded" />
+  
+      <img src={url} alt="uploaded"  />
 
     </div >
 
