@@ -17,7 +17,7 @@
 //     const pantsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/pants');
 //     const shoesRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/shoes');
 //     const hatsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/hats');
-  
+
 //     Promise.all([
 //       listAll(shirtsRef),
 //       listAll(pantsRef),
@@ -49,7 +49,6 @@
 //       });
 //   }, []);
 
-  
 //   function handleChange(event) {
 //     setFile(event.target.files[0]);
 //   }
@@ -71,14 +70,14 @@
 //     );
 
 //   }
-  
+
 //   return (
 //     <div>
 //       <input type="file" onChange={handleChange} accept="/image/*" />
 
 //       <button onClick={handleUpload}>Upload to Firebase</button>
 //       <p>{percent} "% done"</p>
-  
+
 //       {/* <img src={url} alt="uploaded"  /> */}
 
 //       <h1>Shirts</h1>
@@ -92,30 +91,28 @@
 
 //     </div >
 
-
 //   );
 // }
 // export default App;
 
-import React from 'react';
-import './App.css';
-import NavBar from './components/NavBar';
-import { BrowserRouter as Router, Routes, Route}
-	from 'react-router-dom';
-import ClothingUpload from './pages/clothing-upload';
-import OutfitBuilder from './pages/outfit-builder';
+import React from "react";
+import "./App.css";
+import NavBar from "./components/NavBar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ClothingUpload from "./pages/clothing-upload";
+import OutfitBuilder from "./pages/outfit-builder";
 
 function App() {
-return (
-	<Router>
-	<NavBar />
-	<Routes>
-    <Route exact path='/' element={<OutfitBuilder />} />
-    <Route exact path='/outfit-builder' element={<OutfitBuilder />} />
-		<Route path='/clothing-upload' element={<ClothingUpload/>} />
-	</Routes>
-	</Router>
-);
+  return (
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route exact path="/" element={<OutfitBuilder />} />
+        <Route exact path="/outfit-builder" element={<OutfitBuilder />} />
+        <Route path="/clothing-upload" element={<ClothingUpload />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

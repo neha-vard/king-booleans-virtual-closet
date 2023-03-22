@@ -1,11 +1,15 @@
-
 import React from "react";
 import { useState } from "react";
 import { storage } from "../firebaseConfig";
-import { ref, uploadBytesResumable, getDownloadURL, listAll} from "firebase/storage";
-  
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  listAll,
+} from "firebase/storage";
+
 const ClothingUpload = () => {
-// State to store uploaded file
+  // State to store uploaded file
   const [file, setFile] = useState(""); // progress
   const [percent, setPercent] = useState(0); // Handle file upload event and update state
 
@@ -16,7 +20,7 @@ const ClothingUpload = () => {
     if (!file) {
       alert("Please upload an image first!");
     }
-    const storageRef = ref(storage, `/files/${file.name}`); // progress can be paused and resumed. It also exposes progress updates. // Receives the storage reference and the file to upload.
+    const storageRef = ref(storage, `/${value}/${file.name}`); // progress can be paused and resumed. It also exposes progress updates. // Receives the storage reference and the file to upload.
     const uploadTask = uploadBytesResumable(storageRef, file);
     uploadTask.on(
       "state_changed",
@@ -26,19 +30,55 @@ const ClothingUpload = () => {
         ); // update progress
         setPercent(percent);
       },
-      (err) => console.log(err),
+      (err) => console.log(err)
     );
+  };
 
-  }
+  const options = [
+    { label: "Shirt", value: "shirts" },
+
+    { label: "Pants", value: "pants" },
+
+    { label: "Hat", value: "hats" },
+
+    { label: "Shoes", value: "shoes" },
+  ];
+
+  const [value, setValue] = React.useState("shirts");
+
+  const handleChange2 = (event) => {
+    setValue(event.target.value);
+  };
 
   return (
     <div>
       <input type="file" onChange={handleChange} accept="/image/*" />
 
-<button onClick={handleUpload}>Upload to Firebase</button>
-<p>{percent} "% done"</p>
+      <button onClick={handleUpload}>Upload to Firebase</button>
+      <p>{percent} "% done"</p>
+
+      <Dropdown
+        label="What type of clothing are you uploading?"
+        options={options}
+        value={value}
+        onChange={handleChange2}
+      />
     </div>
   );
 };
-  
+
+const Dropdown = ({ label, value, options, onChange }) => {
+  return (
+    <label>
+      {label}
+
+      <select value={value} onChange={onChange}>
+        {options.map((option) => (
+          <option value={option.value}>{option.label}</option>
+        ))}
+      </select>
+    </label>
+  );
+};
+
 export default ClothingUpload;
