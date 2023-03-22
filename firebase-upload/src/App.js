@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { storage } from "./firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL, listAll} from "firebase/storage";
+// import { Carousel} from "react-responsive-carousel";
+import Carousel, {CarouselItem } from "./carousel";
 
 function App() {
   // State to store uploaded file
@@ -81,18 +83,31 @@ function App() {
   
       {/* <img src={url} alt="uploaded"  /> */}
 
-      <h1>Shirts</h1>
+      {/* <h1>Shirts</h1>
       {shirts.map((shirts, i) => <img src={shirts} alt="this" key={i}/>)}
       <h1>Pants</h1>
       {pants.map((pants, i) => <img src={pants} alt="this" key={i}/>)}
       <h1>Shoes</h1>
       {shoes.map((shoes, i) => <img src={shoes} alt="this" key={i}/>)}
       <h1>Hats</h1>
-      {hats.map((hats, i) => <img src={hats} alt="this" key={i}/>)}
+      {hats.map((hats, i) => <img src={hats} alt="this" key={i}/>)} */}
+      
+      <div className="App">
+        <h1>Shirts</h1>
+        <Carousel> 
+          {/* {/* <CarouselItem>{<img src={shirts[0]} alt="this" key={0}/>}</CarouselItem>
+          <CarouselItem>{<img src={shirts[1]} alt="this" key={1}/>}</CarouselItem> */}
+          {/* <CarouselItem>item1</CarouselItem>
+          <CarouselItem>item2</CarouselItem> */}
+        {shirts.map((shirts, i) => <CarouselItem> <img src={shirts} alt="this" key={i}/> </CarouselItem>)}
+        </Carousel>
+      </div>
 
     </div >
 
 
   );
 }
+
+
 export default App;
