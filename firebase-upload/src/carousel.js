@@ -35,6 +35,8 @@ const Carousel = ({children, width}) => {
                 }}
                 > Prev 
                 </button>
+
+                
                 <button onClick={() => {
                     updateIndex(activeIndex + 1);
                 }}

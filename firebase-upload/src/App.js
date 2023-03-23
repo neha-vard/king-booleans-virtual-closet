@@ -93,13 +93,11 @@ function App() {
       {hats.map((hats, i) => <img src={hats} alt="this" key={i}/>)} */}
       
       <div className="App">
-        <h1>Shirts</h1>
         <Carousel> 
-          {/* {/* <CarouselItem>{<img src={shirts[0]} alt="this" key={0}/>}</CarouselItem>
-          <CarouselItem>{<img src={shirts[1]} alt="this" key={1}/>}</CarouselItem> */}
-          {/* <CarouselItem>item1</CarouselItem>
-          <CarouselItem>item2</CarouselItem> */}
         {shirts.map((shirts, i) => <CarouselItem> <img src={shirts} alt="this" key={i}/> </CarouselItem>)}
+        </Carousel>
+        <Carousel> 
+        {pants.map((pants, i) => <CarouselItem> <img src={pants} alt="this" key={i}/> </CarouselItem>)}
         </Carousel>
       </div>
 
