@@ -11,8 +11,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 800px;
-    color: #fff;
+    color: white;
+    height: auto;
+    width: 100px;
 }
 
 .indicators {

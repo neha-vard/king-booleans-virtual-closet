@@ -73,7 +73,7 @@ function App() {
     );
 
   }
-  
+
   return (
     <div>
       <input type="file" onChange={handleChange} accept="/image/*" />
@@ -91,13 +91,18 @@ function App() {
       {shoes.map((shoes, i) => <img src={shoes} alt="this" key={i}/>)}
       <h1>Hats</h1>
       {hats.map((hats, i) => <img src={hats} alt="this" key={i}/>)} */}
-      
-      <div className="App">
-        <Carousel> 
-        {shirts.map((shirts, i) => <CarouselItem> <img src={shirts} alt="this" key={i}/> </CarouselItem>)}
+      <div className="App" >
+        <Carousel>
+        {hats.map((hats, i) => <CarouselItem > <img src={hats} alt="this" key={i} height="140"/> </CarouselItem>)}
         </Carousel>
         <Carousel> 
-        {pants.map((pants, i) => <CarouselItem> <img src={pants} alt="this" key={i}/> </CarouselItem>)}
+        {shirts.map((shirts, i) => <CarouselItem> <img src={shirts} alt="this" key={i} height="240"/> </CarouselItem>)}
+        </Carousel>
+        <Carousel> 
+        {pants.map((pants, i) => <CarouselItem> <img src={pants} alt="this" key={i} height="240"/> </CarouselItem>)}
+        </Carousel>
+        <Carousel>
+        {shoes.map((shoes, i) => <CarouselItem> <img src={shoes} alt="this" key={i} height="160"/> </CarouselItem>)}
         </Carousel>
       </div>
 
