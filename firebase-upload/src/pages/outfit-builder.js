@@ -1,12 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { storage } from "../firebaseConfig";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  listAll,
-} from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL, listAll} from "firebase/storage";
+import Carousel, {CarouselItem } from "../carousel";
 
 const OutfitBuilder = () => {
   const [shirts, setShirts] = useState([]);
@@ -65,22 +61,18 @@ const OutfitBuilder = () => {
 
   return (
     <div>
-      <h1>Shirts</h1>
-      {shirts.map((shirts, i) => (
-        <img src={shirts} alt="this" key={i} />
-      ))}
-      <h1>Pants</h1>
-      {pants.map((pants, i) => (
-        <img src={pants} alt="this" key={i} />
-      ))}
-      <h1>Shoes</h1>
-      {shoes.map((shoes, i) => (
-        <img src={shoes} alt="this" key={i} />
-      ))}
-      <h1>Hats</h1>
-      {hats.map((hats, i) => (
-        <img src={hats} alt="this" key={i} />
-      ))}
+    <Carousel>
+    {hats.map((hats, i) => <CarouselItem > <img src={hats} alt="this" key={i} height="140"/> </CarouselItem>)}
+    </Carousel>
+    <Carousel> 
+    {shirts.map((shirts, i) => <CarouselItem> <img src={shirts} alt="this" key={i} height="240"/> </CarouselItem>)}
+    </Carousel>
+    <Carousel> 
+    {pants.map((pants, i) => <CarouselItem> <img src={pants} alt="this" key={i} height="240"/> </CarouselItem>)}
+    </Carousel>
+    <Carousel>
+    {shoes.map((shoes, i) => <CarouselItem> <img src={shoes} alt="this" key={i} height="160"/> </CarouselItem>)}
+    </Carousel>
     </div>
   );
 };

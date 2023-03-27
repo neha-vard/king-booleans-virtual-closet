@@ -69,38 +69,13 @@
 //       (err) => console.log(err),
 //     );
 
-//   }
-
-//   return (
-//     <div>
-//       <input type="file" onChange={handleChange} accept="/image/*" />
-
-//       <button onClick={handleUpload}>Upload to Firebase</button>
-//       <p>{percent} "% done"</p>
-
-//       {/* <img src={url} alt="uploaded"  /> */}
-
-//       <h1>Shirts</h1>
-//       {shirts.map((shirts, i) => <img src={shirts} alt="this" key={i}/>)}
-//       <h1>Pants</h1>
-//       {pants.map((pants, i) => <img src={pants} alt="this" key={i}/>)}
-//       <h1>Shoes</h1>
-//       {shoes.map((shoes, i) => <img src={shoes} alt="this" key={i}/>)}
-//       <h1>Hats</h1>
-//       {hats.map((hats, i) => <img src={hats} alt="this" key={i}/>)}
-
-//     </div >
-
-//   );
-// }
-// export default App;
-
-import React from "react";
-import "./App.css";
-import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ClothingUpload from "./pages/clothing-upload";
-import OutfitBuilder from "./pages/outfit-builder";
+import React from 'react';
+import './App.css';
+import NavBar from './components/NavBar';
+import { BrowserRouter as Router, Routes, Route}
+	from 'react-router-dom';
+import ClothingUpload from './pages/clothing-upload';
+import OutfitBuilder from './pages/outfit-builder';
 
 function App() {
   return (
