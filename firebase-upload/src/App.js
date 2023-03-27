@@ -17,7 +17,7 @@
 //     const pantsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/pants');
 //     const shoesRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/shoes');
 //     const hatsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/hats');
-  
+
 //     Promise.all([
 //       listAll(shirtsRef),
 //       listAll(pantsRef),
@@ -49,7 +49,6 @@
 //       });
 //   }, []);
 
-  
 //   function handleChange(event) {
 //     setFile(event.target.files[0]);
 //   }
@@ -79,16 +78,16 @@ import ClothingUpload from './pages/clothing-upload';
 import OutfitBuilder from './pages/outfit-builder';
 
 function App() {
-return (
-	<Router>
-	<NavBar />
-	<Routes>
-    <Route exact path='/' element={<OutfitBuilder />} />
-    <Route exact path='/outfit-builder' element={<OutfitBuilder />} />
-		<Route path='/clothing-upload' element={<ClothingUpload/>} />
-	</Routes>
-	</Router>
-);
+  return (
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route exact path="/" element={<OutfitBuilder />} />
+        <Route exact path="/outfit-builder" element={<OutfitBuilder />} />
+        <Route path="/clothing-upload" element={<ClothingUpload />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

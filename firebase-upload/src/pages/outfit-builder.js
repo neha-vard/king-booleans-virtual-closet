@@ -1,23 +1,33 @@
-
 import React from "react";
 import { useEffect, useState } from "react";
 import { storage } from "../firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL, listAll} from "firebase/storage";
 import Carousel, {CarouselItem } from "../carousel";
-  
-const OutfitBuilder = () => {
 
-    const [shirts, setShirts] = useState([]);
+const OutfitBuilder = () => {
+  const [shirts, setShirts] = useState([]);
   const [pants, setPants] = useState([]);
   const [shoes, setShoes] = useState([]);
   const [hats, setHats] = useState([]);
 
   useEffect(() => {
-    const shirtsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/shirts');
-    const pantsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/pants');
-    const shoesRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/shoes');
-    const hatsRef = ref(storage, 'gs://king-booleans-virtual-closet.appspot.com/hats');
-  
+    const shirtsRef = ref(
+      storage,
+      "gs://king-booleans-virtual-closet.appspot.com/shirts"
+    );
+    const pantsRef = ref(
+      storage,
+      "gs://king-booleans-virtual-closet.appspot.com/pants"
+    );
+    const shoesRef = ref(
+      storage,
+      "gs://king-booleans-virtual-closet.appspot.com/shoes"
+    );
+    const hatsRef = ref(
+      storage,
+      "gs://king-booleans-virtual-closet.appspot.com/hats"
+    );
+
     Promise.all([
       listAll(shirtsRef),
       listAll(pantsRef),
@@ -66,5 +76,5 @@ const OutfitBuilder = () => {
     </div>
   );
 };
-  
+
 export default OutfitBuilder;

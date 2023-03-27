@@ -1,8 +1,6 @@
-
 import React from "react";
-import { Nav, NavLink, NavMenu } 
-    from "./NavBarElements";
-  
+import { Nav, NavLink, NavMenu } from "./NavBarElements";
+
 const NavBar = () => {
   return (
     <>
@@ -19,5 +17,5 @@ const NavBar = () => {
     </>
   );
 };
-  
+
 export default NavBar;
