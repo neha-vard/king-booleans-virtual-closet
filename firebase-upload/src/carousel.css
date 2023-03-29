@@ -24,3 +24,22 @@
 .indicators>button {
     margin: 5px;
 }
+
+
+.prev {
+    position: relative;
+    left: -250px;
+    transform: translateY(-500%);
+    cursor: pointer;
+    font-size: large;
+
+}
+
+.next {
+    position: relative;
+    right: -250px;
+    transform: translateY(-500%);
+    cursor: pointer;
+    font-size: large;
+
+}
