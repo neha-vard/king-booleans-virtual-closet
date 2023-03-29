@@ -52,12 +52,14 @@ const ClothingUpload = () => {
 
   return (
     <div>
+      <h1 style={{textAlign: "center"}}>Closet Builder</h1>
+      <h3 style={{textAlign: "center", fontWeight: "600"}}>Upload images of your clothing to your virtual closet!</h3>
       <div style={{ width: "60%", marginLeft: "17%" }}>
         <div
           style={{
             display: "flex",
             justifyContent: "space-around",
-            marginTop: "25%",
+            marginTop: "5%",
           }}
         >
           <Dropdown
@@ -74,7 +76,7 @@ const ClothingUpload = () => {
           </div>
         </div>
       </div>
-      <p style={{marginTop: "5%", textAlign: "center"}}>{percent} "% done"</p>
+      <p style={{marginTop: "2%", textAlign: "center"}}>{percent} "% done"</p>
     </div>
   );
 };

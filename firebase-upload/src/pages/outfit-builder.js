@@ -66,6 +66,8 @@ const OutfitBuilder = () => {
 
   return (
     <div>
+      <h1 style={{textAlign: "center"}}>Outfit Builder</h1>
+      <h3 style={{textAlign: "center", fontWeight: "600"}}>Build an outfit with items in your closet!</h3>
       <Carousel>
         {hats.map((hats, i) => (
           <CarouselItem>
