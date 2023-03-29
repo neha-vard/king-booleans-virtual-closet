@@ -70,7 +70,7 @@ const ClothingUpload = () => {
           <input type="file" onChange={handleChange} accept="/image/*" />
 
           <div style={{ marginLeft: "-6%" }}>
-            <button onClick={handleUpload}>Upload to Firebase</button>
+            <button onClick={handleUpload}>Add this item to your virtual closet!</button>
           </div>
         </div>
       </div>
