@@ -24,23 +24,23 @@ const Carousel = ({children, width}) => {
 
     return (
         <div className='carousel'>
-            
             <div className='inner' style={{transform : `translateX(-${activeIndex * 100}%)`}}>
                 {Children.map(children, (child, index) => {
                     return cloneElement(child, {width : "100%"});
                 })}
             </div>
             <div className='indicators'>
-
-                <button className='prev' onClick={() => {
+                <button onClick={() => {
                     updateIndex(activeIndex - 1);
-                }}> &#8249; 
+                }}
+                > Prev 
                 </button>
 
                 
-                <button className='next' onClick={() => {
+                <button onClick={() => {
                     updateIndex(activeIndex + 1);
-                }}> &#8250;
+                }}
+                > Next
                 </button>
             </div>
         </div>
