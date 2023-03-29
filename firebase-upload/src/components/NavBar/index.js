@@ -10,7 +10,7 @@ const NavBar = () => {
             Outfit Builder
           </NavLink>
           <NavLink to="/clothing-upload" activeStyle>
-            Upload Images of Your Clothing!
+            Closet Builder
           </NavLink>
         </NavMenu>
       </Nav>
