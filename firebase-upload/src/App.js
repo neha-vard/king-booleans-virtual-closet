@@ -69,13 +69,12 @@
 //       (err) => console.log(err),
 //     );
 
-import React from 'react';
-import './App.css';
-import NavBar from './components/NavBar';
-import { BrowserRouter as Router, Routes, Route}
-	from 'react-router-dom';
-import ClothingUpload from './pages/clothing-upload';
-import OutfitBuilder from './pages/outfit-builder';
+import React from "react";
+import "./App.css";
+import NavBar from "./components/NavBar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ClothingUpload from "./pages/clothing-upload";
+import OutfitBuilder from "./pages/outfit-builder";
 
 function App() {
   return (

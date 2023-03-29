@@ -1,8 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { storage } from "../firebaseConfig";
-import { ref, uploadBytesResumable, getDownloadURL, listAll} from "firebase/storage";
-import Carousel, {CarouselItem } from "../carousel";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  listAll,
+} from "firebase/storage";
+import Carousel, { CarouselItem } from "../carousel";
 
 const OutfitBuilder = () => {
   const [shirts, setShirts] = useState([]);
@@ -61,18 +66,38 @@ const OutfitBuilder = () => {
 
   return (
     <div>
-    <Carousel>
-    {hats.map((hats, i) => <CarouselItem > <img src={hats} alt="this" key={i} height="140"/> </CarouselItem>)}
-    </Carousel>
-    <Carousel> 
-    {shirts.map((shirts, i) => <CarouselItem> <img src={shirts} alt="this" key={i} height="240"/> </CarouselItem>)}
-    </Carousel>
-    <Carousel> 
-    {pants.map((pants, i) => <CarouselItem> <img src={pants} alt="this" key={i} height="240"/> </CarouselItem>)}
-    </Carousel>
-    <Carousel>
-    {shoes.map((shoes, i) => <CarouselItem> <img src={shoes} alt="this" key={i} height="160"/> </CarouselItem>)}
-    </Carousel>
+      <Carousel>
+        {hats.map((hats, i) => (
+          <CarouselItem>
+            {" "}
+            <img src={hats} alt="this" key={i} height="140" />{" "}
+          </CarouselItem>
+        ))}
+      </Carousel>
+      <Carousel>
+        {shirts.map((shirts, i) => (
+          <CarouselItem>
+            {" "}
+            <img src={shirts} alt="this" key={i} height="240" />{" "}
+          </CarouselItem>
+        ))}
+      </Carousel>
+      <Carousel>
+        {pants.map((pants, i) => (
+          <CarouselItem>
+            {" "}
+            <img src={pants} alt="this" key={i} height="240" />{" "}
+          </CarouselItem>
+        ))}
+      </Carousel>
+      <Carousel>
+        {shoes.map((shoes, i) => (
+          <CarouselItem>
+            {" "}
+            <img src={shoes} alt="this" key={i} height="160" />{" "}
+          </CarouselItem>
+        ))}
+      </Carousel>
     </div>
   );
 };

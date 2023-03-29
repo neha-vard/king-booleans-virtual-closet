@@ -52,17 +52,29 @@ const ClothingUpload = () => {
 
   return (
     <div>
-      <input type="file" onChange={handleChange} accept="/image/*" />
+      <div style={{ width: "60%", marginLeft: "17%" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            marginTop: "25%",
+          }}
+        >
+          <Dropdown
+            label="What type of clothing are you uploading? "
+            options={options}
+            value={value}
+            onChange={handleChange2}
+          />
 
-      <button onClick={handleUpload}>Upload to Firebase</button>
-      <p>{percent} "% done"</p>
+          <input type="file" onChange={handleChange} accept="/image/*" />
 
-      <Dropdown
-        label="What type of clothing are you uploading?"
-        options={options}
-        value={value}
-        onChange={handleChange2}
-      />
+          <div style={{ marginLeft: "-6%" }}>
+            <button onClick={handleUpload}>Upload to Firebase</button>
+          </div>
+        </div>
+      </div>
+      <p style={{marginTop: "5%", textAlign: "center"}}>{percent} "% done"</p>
     </div>
   );
 };
