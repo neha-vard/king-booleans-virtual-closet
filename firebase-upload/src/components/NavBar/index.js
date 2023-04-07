@@ -12,6 +12,9 @@ const NavBar = () => {
           <NavLink to="/clothing-upload" activeStyle>
             Closet Builder
           </NavLink>
+          <NavLink to="/past-outfits" activeStyle>
+            Past Outfits
+          </NavLink>
         </NavMenu>
       </Nav>
     </>
