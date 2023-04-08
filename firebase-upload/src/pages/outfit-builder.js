@@ -14,6 +14,7 @@ const OutfitBuilder = () => {
   const [pants, setPants] = useState([]);
   const [shoes, setShoes] = useState([]);
   const [hats, setHats] = useState([]);
+  const [pastOutfits, setPastOutfits] = useState([]);
 
   useEffect(() => {
     const shirtsRef = ref(
@@ -64,42 +65,66 @@ const OutfitBuilder = () => {
       });
   }, []);
 
+  const [currentShirtIndex, setCurrentShirtIndex] = useState(0);
+  const [currentPantIndex, setCurrentPantIndex] = useState(0);
+  const [currentShoeIndex, setCurrentShoeIndex] = useState(0);
+  const [currentHatIndex, setCurrentHatIndex] = useState(0);
+
+  const addPastOutfit = () => {
+    const now = new Date();
+    const currentOutfit = {
+      hat: hats[currentHatIndex],
+      shirt: shirts[currentShirtIndex],
+      pant: pants[currentPantIndex],
+      shoe: shoes[currentShoeIndex],
+      date: now.toLocaleString(),
+    };
+    setPastOutfits([...pastOutfits, currentOutfit]);
+  };
+
   return (
     <div>
       <h1 style={{textAlign: "center"}}>Outfit Builder</h1>
       <h3 style={{textAlign: "center", fontWeight: "600", marginBottom: "5%"}}>Build an outfit with items in your closet!</h3>
-      <Carousel>
+      <Carousel onActiveIndexChange={setCurrentHatIndex}>
         {hats.map((hats, i) => (
-          <CarouselItem>
+          <CarouselItem key={i} >
             {" "}
             <img src={hats} alt="this" key={i} height="140" />{" "}
           </CarouselItem>
         ))}
       </Carousel>
-      <Carousel>
+      <Carousel onActiveIndexChange={setCurrentShirtIndex}>
         {shirts.map((shirts, i) => (
-          <CarouselItem>
+          <CarouselItem key={i}>
             {" "}
             <img src={shirts} alt="this" key={i} height="240" />{" "}
           </CarouselItem>
         ))}
       </Carousel>
-      <Carousel>
+      <Carousel onActiveIndexChange={setCurrentPantIndex}>
         {pants.map((pants, i) => (
-          <CarouselItem>
+          <CarouselItem key={i}>
             {" "}
             <img src={pants} alt="this" key={i} height="240" />{" "}
           </CarouselItem>
         ))}
       </Carousel>
-      <Carousel>
+      <Carousel onActiveIndexChange={setCurrentShoeIndex}>
         {shoes.map((shoes, i) => (
-          <CarouselItem>
+          <CarouselItem key={i}>
             {" "}
             <img src={shoes} alt="this" key={i} height="160" />{" "}
           </CarouselItem>
         ))}
       </Carousel>
+      <button onClick={addPastOutfit} 
+              style={{display: "flex", 
+                      justifyContent: "center",
+                      alignItems: "center",
+                      margin: "auto",
+                      marginBottom: "5%",}} 
+                      >Dress Me</button>
     </div>
   );
 };

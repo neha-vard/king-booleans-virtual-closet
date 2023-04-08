@@ -9,7 +9,7 @@ export const CarouselItem = ({children, width}) => {
     );
 };
 
-const Carousel = ({children, width}) => {
+const Carousel = ({children, width, onActiveIndexChange}) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const updateIndex = (newIndex) => {
@@ -19,6 +19,7 @@ const Carousel = ({children, width}) => {
             newIndex = 0;
         }
         setActiveIndex(newIndex);
+        onActiveIndexChange(newIndex)
     }
 
 

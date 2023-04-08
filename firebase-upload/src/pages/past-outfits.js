@@ -9,6 +9,7 @@ import {
 } from "firebase/storage";
 import Carousel, { CarouselItem } from "../carousel";
 
+
 const PastOutfits = () => {
     const [shirts, setShirts] = useState([]);
     const [pants, setPants] = useState([]);
@@ -63,7 +64,8 @@ const PastOutfits = () => {
             console.log(error);
         });
     }, []);
-    
+
+
     return (
         <div>
         <h1 style={{ textAlign: "center" }}>Past Outfits</h1>
