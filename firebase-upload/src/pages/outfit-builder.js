@@ -6,6 +6,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
   listAll,
+  uploadString
 } from "firebase/storage";
 import Carousel, { CarouselItem } from "../carousel";
 
@@ -80,6 +81,21 @@ const OutfitBuilder = () => {
       date: now.toLocaleString(),
     };
     setPastOutfits([...pastOutfits, currentOutfit]);
+
+    // create a string and upload it to firebase storage using uploadBytesResumable or uploadString (see firebase docs)
+    const outfitString = JSON.stringify(currentOutfit);
+    const date = now.toLocaleString();
+    // get the month and dat from the date string
+    const month = date.split("/")[0];
+    const day = date.split("/")[1];
+    const year = date.split("/")[2];
+
+    const outfitRef = ref(storage, `gs://king-booleans-virtual-closet.appspot.com/past-outfits/${month}-${day}-${year}.txt`);
+    uploadString(outfitRef, outfitString, "raw").then((snapshot) => {
+      console.log("Uploaded a raw string!");
+    }
+    );
+
   };
 
   return (
