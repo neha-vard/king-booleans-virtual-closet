@@ -51,7 +51,38 @@ const PastOutfits = () => {
       <Carousel>
         {hats.map((hat, i) => (
           <CarouselItem key={i}>
-            <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
+                position: "relative",
+              }}
+            >
+              <style>{`
+              .prev {
+                position: relative;
+                transform: translateY(-3275%);
+                left: -5%;
+              }
+              .next {
+                position: relative;
+                transform: translateY(-3275%);
+                left: 5%;
+              }
+            `}</style>
+              <p
+                style={{
+                  textAlign: "center",
+                  marginBottom: "20px",
+                  padding: "10px",
+                  backgroundColor: "lightgray",
+                  width: "fit-content",
+                  alignSelf: "center",
+                }}
+              >
+                {dates[i]}
+              </p>
               <img
                 src={hat}
                 alt="hat"
@@ -72,15 +103,6 @@ const PastOutfits = () => {
                 alt="shoes"
                 style={{ objectFit: "contain", height: "160px", width: "auto" }}
               />
-              <p
-                style={{
-                  textAlign: "center",
-                  marginBottom: "20px",
-                  padding: "10px",
-                }}
-              >
-                {dates[i]}
-              </p>
             </div>
           </CarouselItem>
         ))}
