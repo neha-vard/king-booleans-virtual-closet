@@ -1,8 +1,7 @@
-import { doc, collection, getDocs, query, getDoc } from "firebase/firestore";
-// import { getDownloadURL, listAll, ref } from "firebase/storage";
+import { collection, getDocs, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Carousel, { CarouselItem } from "../carousel";
-import { firestore, storage } from "../firebaseConfig";
+import { firestore } from "../firebaseConfig";
 
 const PastOutfits = () => {
   const [outfits, setOutfits] = useState([]);
@@ -34,104 +33,7 @@ const PastOutfits = () => {
       .catch((error) => {
         console.log(error);
       });
-
-    // const docRef = doc(firestore, "outfits", "outfit1");
-    // getDoc(docRef)
-    //   .then((docSnap) => {
-    //     if (docSnap.exists()) {
-    //       const outfit = docSnap.data();
-    //       const { hat, shirt, pant, shoe, date } = outfit;
-    //       setHats((hats) => [...hats, hat]);
-    //       setShirts((shirts) => [...shirts, shirt]);
-    //       setPants((pants) => [...pants, pant]);
-    //       setShoes((shoes) => [...shoes, shoe]);
-    //       setDates((dates) => [...dates, date]);
-    //       setOutfits((outfits) => [...outfits, outfit]);
-    //       console.log("hat is " + hat);
-    //       console.log(shirt);
-    //       console.log(pant);
-    //       console.log(shoe);
-    //       console.log(date);
-    //       console.log("hello");
-    //     } else {
-    //       // doc.data() will be undefined in this case
-    //       console.log("No such document!");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
-    // getDoc(doc(firestore, "outfits", "outfit1")).then((doc) => {
-    //   const outfit = doc.data();
-    //   console.log(outfit);
-    //   const { hat, shirt, pant, shoe, date } = outfit;
-    //   console.log(hat, shirt, pant, shoe, date);
-    //   console.log("hello");
-    // });
-
-    // Promise.all([listAll(outfitsRef)])
-    //   .then(([outfitsRes]) => {
-    //     const fetchDownloadUrls = async (items) => {
-    //       return Promise.all(items.map((item) => getDownloadURL(item)));
-    //     };
-    //     Promise.all([fetchDownloadUrls(outfitsRes.items)])
-    //       .then(([outfits]) => {
-    //         setOutfits(outfits);
-    //       })
-    //       .catch((error) => {
-    //         console.log(error);
-    //       });
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   }, []);
-
-  // useEffect(() => {
-  //   outfits.forEach((outfit) => {
-  //     fetch(outfit)
-  //       .then((response) => response.text())
-  //       .then((data) => {
-  //         // JSON.parse(data) NOT SEEMING TO WORK
-  //         const { hat, shirt, pant, shoe, date } = JSON.parse(data);
-  //         // hats.push(hat);
-  //         // shirts.push(shirt);
-  //         // pants.push(pant);
-  //         // shoes.push(shoe);
-  //         // dates.push(date);
-
-  //         // const parsedData = parseOutfitData(data);
-  //         // const { hat, shirt, pant, shoe, date } = parsedData;
-  //         // hats.push(hat);
-  //         // shirts.push(shirt);
-  //         // pants.push(pant);
-  //         // shoes.push(shoe);
-  //         // dates.push(date);
-  //       })
-  //       .catch(error => console.log(error));
-  //   });
-  // }, [outfits]);
-
-  // useEffect(() => {
-  //   outfits.forEach((outfit) => {
-  //     fetch(outfit)
-  //       .then((response) => response.text())
-  //       .then((data) => {
-  //         try {
-  //           const parsedData = JSON.parse(data);
-  //           setHats((hats) => [...hats, parsedData.hat]);
-  //           setShirts((shirts) => [...shirts, parsedData.shirt]);
-  //           setPants((pants) => [...pants, parsedData.pant]);
-  //           setShoes((shoes) => [...shoes, parsedData.shoe]);
-  //           setDates((dates) => [...dates, parsedData.date]);
-  //         } catch (error) {
-  //           console.log(error);
-  //         }
-  //       })
-  //       .catch((error) => console.log(error));
-  //   });
-  // }, [outfits]);
 
   return (
     <div>
@@ -149,7 +51,7 @@ const PastOutfits = () => {
       <Carousel>
         {hats.map((hat, i) => (
           <CarouselItem key={i}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
               <img
                 src={hat}
                 alt="hat"
@@ -170,7 +72,15 @@ const PastOutfits = () => {
                 alt="shoes"
                 style={{ objectFit: "contain", height: "160px", width: "auto" }}
               />
-              <p style={{ textAlign: "center" }}>{dates[i]}</p>
+              <p
+                style={{
+                  textAlign: "center",
+                  marginBottom: "20px",
+                  padding: "10px",
+                }}
+              >
+                {dates[i]}
+              </p>
             </div>
           </CarouselItem>
         ))}
