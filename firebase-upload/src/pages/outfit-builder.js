@@ -1,14 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { storage } from "../firebaseConfig";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  listAll,
-  uploadString
-} from "firebase/storage";
+import { firestore, storage } from "../firebaseConfig";
+import { ref, getDownloadURL, listAll, uploadString } from "firebase/storage";
 import Carousel, { CarouselItem } from "../carousel";
+import { doc, addDoc, collection } from "firebase/firestore";
 
 const OutfitBuilder = () => {
   const [shirts, setShirts] = useState([]);
@@ -82,29 +77,41 @@ const OutfitBuilder = () => {
     };
     setPastOutfits([...pastOutfits, currentOutfit]);
 
-    // create a string and upload it to firebase storage using uploadBytesResumable or uploadString (see firebase docs)
-    const outfitString = JSON.stringify(currentOutfit);
+    // // create a string and upload it to firebase storage using uploadBytesResumable or uploadString (see firebase docs)
+    // const outfitString = JSON.stringify(currentOutfit);
+
     const date = now.toLocaleString();
     // get the month and dat from the date string
     const month = date.split("/")[0];
     const day = date.split("/")[1];
-    const year = date.split("/")[2];
+    const year = date.split("/")[2].substring(0, 4);
 
-    const outfitRef = ref(storage, `gs://king-booleans-virtual-closet.appspot.com/past-outfits/${month}-${day}-${year}.txt`);
-    uploadString(outfitRef, outfitString, "raw").then((snapshot) => {
-      console.log("Uploaded a raw string!");
-    }
-    );
+    addDoc(collection(firestore, "outfits"), {
+      hat: hats[currentHatIndex],
+      shirt: shirts[currentShirtIndex],
+      pant: pants[currentPantIndex],
+      shoe: shoes[currentShoeIndex],
+      date: `${month}-${day}-${year}`,
+    });
 
+    // const outfitRef = ref(storage, `gs://king-booleans-virtual-closet.appspot.com/past-outfits/${month}-${day}-${year}.txt`);
+    // uploadString(outfitRef, outfitString, "raw").then((snapshot) => {
+    //   console.log("Uploaded a raw string!");
+    // }
+    // );
   };
 
   return (
     <div>
-      <h1 style={{textAlign: "center"}}>Outfit Builder</h1>
-      <h3 style={{textAlign: "center", fontWeight: "600", marginBottom: "5%"}}>Build an outfit with items in your closet!</h3>
+      <h1 style={{ textAlign: "center" }}>Outfit Builder</h1>
+      <h3
+        style={{ textAlign: "center", fontWeight: "600", marginBottom: "5%" }}
+      >
+        Build an outfit with items in your closet!
+      </h3>
       <Carousel onActiveIndexChange={setCurrentHatIndex}>
         {hats.map((hats, i) => (
-          <CarouselItem key={i} >
+          <CarouselItem key={i}>
             {" "}
             <img src={hats} alt="this" key={i} height="140" />{" "}
           </CarouselItem>
@@ -134,13 +141,18 @@ const OutfitBuilder = () => {
           </CarouselItem>
         ))}
       </Carousel>
-      <button onClick={addPastOutfit} 
-              style={{display: "flex", 
-                      justifyContent: "center",
-                      alignItems: "center",
-                      margin: "auto",
-                      marginBottom: "5%",}} 
-                      >Dress Me</button>
+      <button
+        onClick={addPastOutfit}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "auto",
+          marginBottom: "5%",
+        }}
+      >
+        Dress Me
+      </button>
     </div>
   );
 };
