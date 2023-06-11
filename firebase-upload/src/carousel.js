@@ -34,23 +34,25 @@ const Carousel = ({ children, width, onActiveIndexChange }) => {
       </div>
       <div className="indicators">
         <button
-          className="prev"
+          className="triangle-buttons"
           onClick={() => {
             updateIndex(activeIndex - 1);
           }}
         >
           {" "}
-          &#8249;
+          {/* &#8249; */}
+          <div class="triangle-buttons__triangle triangle-buttons__triangle--l"></div>
         </button>
 
         <button
-          className="next"
+          className="triangle-buttons"
           onClick={() => {
             updateIndex(activeIndex + 1);
           }}
         >
           {" "}
-          &#8250;
+          {/* &#8250; */}
+          <div class="triangle-buttons__triangle triangle-buttons__triangle--r"></div>
         </button>
       </div>
     </div>

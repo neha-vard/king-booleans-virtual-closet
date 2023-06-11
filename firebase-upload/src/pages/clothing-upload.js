@@ -1,12 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { storage } from "../firebaseConfig";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  listAll,
-} from "firebase/storage";
+import { ref, uploadBytesResumable } from "firebase/storage";
 
 const ClothingUpload = () => {
   // State to store uploaded file
@@ -53,7 +48,7 @@ const ClothingUpload = () => {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Closet Builder</h1>
-      <h3 style={{ textAlign: "center", fontWeight: "600" }}>
+      <h3 className="sub-title">
         Upload images of your clothing to your virtual closet!
       </h3>
       <div style={{ width: "60%", marginLeft: "17%" }}>

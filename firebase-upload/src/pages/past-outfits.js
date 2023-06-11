@@ -2,9 +2,10 @@ import { collection, getDocs, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Carousel, { CarouselItem } from "../carousel";
 import { firestore } from "../firebaseConfig";
+import "./past-outfits.css";
 
 const PastOutfits = () => {
-  const [outfits, setOutfits] = useState([]);
+  // const [outfits, setOutfits] = useState([]);
   const [hats, setHats] = useState([]);
   const [shirts, setShirts] = useState([]);
   const [pants, setPants] = useState([]);
@@ -26,7 +27,7 @@ const PastOutfits = () => {
           setPants((pants) => [...pants, pant]);
           setShoes((shoes) => [...shoes, shoe]);
           setDates((dates) => [...dates, date]);
-          setOutfits((outfits) => [...outfits, outfit]);
+          // setOutfits((outfits) => [...outfits, outfit]);
           console.log("Hello");
         });
       })
@@ -38,51 +39,37 @@ const PastOutfits = () => {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Past Outfits</h1>
-      <h3
-        style={{
-          textAlign: "center",
-          fontWeight: "600",
-          marginBottom: "5%",
-        }}
-      >
-        View some of your past outfits!
-      </h3>
+      <h3 className="sub-title">View some of your past outfits!</h3>
 
       <Carousel>
         {hats.map((hat, i) => (
           <CarouselItem key={i}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                flex: 1,
-                position: "relative",
-              }}
-            >
+            <div className="outfit">
               <style>{`
-              .prev {
-                position: relative;
-                transform: translateY(-3275%);
-                left: -5%;
+
+              .triangle-buttons__triangle {
+                border-style: solid;
+
+                /* Size */
+                height: 0px;
+                width: 0px;
+                transform: translateY(-1740%);
               }
-              .next {
-                position: relative;
-                transform: translateY(-3275%);
-                left: 5%;
+
+              .triangle-buttons__triangle--r {
+                border-color: transparent transparent transparent #d1d5db;
+                border-width: 1.5rem 0 1.5rem 1.5rem;
+                right: -120px;
               }
+
+              .triangle-buttons__triangle--l {
+                border-color: transparent #d1d5db transparent transparent;
+                border-width: 1.5rem 1.5rem 1.5rem 0;
+                left: -120px;
+              }
+              
             `}</style>
-              <p
-                style={{
-                  textAlign: "center",
-                  marginBottom: "20px",
-                  padding: "10px",
-                  backgroundColor: "lightgray",
-                  width: "fit-content",
-                  alignSelf: "center",
-                }}
-              >
-                {dates[i]}
-              </p>
+              <p className="date">{dates[i]}</p>
               <img
                 src={hat}
                 alt="hat"
