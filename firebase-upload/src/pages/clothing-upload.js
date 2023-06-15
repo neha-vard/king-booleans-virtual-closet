@@ -12,9 +12,13 @@ const ClothingUpload = () => {
   // State to store uploaded file
   const [file, setFile] = useState(""); // progress
   const [percent, setPercent] = useState(0); // Handle file upload event and update state
+  const [image, setImage] = useState(null);
 
   function handleChange(event) {
     setFile(event.target.files[0]);
+    if (event.target.files && event.target.files[0]) {
+      setImage(URL.createObjectURL(event.target.files[0]));
+    }
   }
   const handleUpload = () => {
     if (!file) {
@@ -52,8 +56,10 @@ const ClothingUpload = () => {
 
   return (
     <div>
-      <h1 style={{textAlign: "center"}}>Closet Builder</h1>
-      <h3 style={{textAlign: "center", fontWeight: "600"}}>Upload images of your clothing to your virtual closet!</h3>
+      <h1 style={{ textAlign: "center" }}>Closet Builder</h1>
+      <h3 style={{ textAlign: "center", fontWeight: "600" }}>
+        Upload images of your clothing to your virtual closet!
+      </h3>
       <div style={{ width: "60%", marginLeft: "17%" }}>
         <div
           style={{
@@ -62,31 +68,118 @@ const ClothingUpload = () => {
             marginTop: "5%",
           }}
         >
+          <input
+            type="file"
+            onChange={handleChange}
+            accept="/image/*"
+            style={{
+              position: "absolute",
+              left: "55vh",
+              width: "300px",
+              fontSize: "15px",
+            }}
+          />
           <Dropdown
             label="What type of clothing are you uploading? "
             options={options}
             value={value}
             onChange={handleChange2}
+            // style={{ position: "relative", left: "20vh" }}
           />
 
-          <input type="file" onChange={handleChange} accept="/image/*" />
-
           <div style={{ marginLeft: "-6%" }}>
-            <button onClick={handleUpload}>Add this item to your virtual closet!</button>
+            <img
+              src={image}
+              alt=""
+              style={{
+                position: "absolute",
+                width: "250px",
+                top: "25vh",
+                left: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: "20px auto",
+                marginBottom: "5%",
+                height: "auto",
+                maxHeight: "300px",
+              }}
+            />
+            <button
+              onClick={handleUpload}
+              style={{
+                position: "absolute",
+                top: "65vh",
+                left: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: "20px auto",
+                marginBottom: "5%",
+                borderRadius: "20px",
+                backgroundColor: "white",
+                fontSize: "20px",
+                cursor: "pointer",
+                padding: "10px",
+                width: "250px",
+              }}
+            >
+              Add this item to your virtual closet!
+            </button>
+
+            <p
+              style={{
+                position: "absolute",
+                top: "75vh",
+                left: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: "20px auto",
+                marginBottom: "5%",
+                textAlign: "center",
+                width: "250px",
+                visibility: percent === 0 ? "hidden" : "visible",
+              }}
+            >
+              {percent}% done
+            </p>
           </div>
         </div>
       </div>
-      <p style={{marginTop: "2%", textAlign: "center"}}>{percent} "% done"</p>
     </div>
   );
 };
 
 const Dropdown = ({ label, value, options, onChange }) => {
   return (
-    <label>
+    <label
+      style={{
+        position: "absolute",
+        left: "45vh",
+        top: "40vh",
+        fontSize: "20px",
+      }}
+    >
       {label}
 
-      <select value={value} onChange={onChange}>
+      <select
+        value={value}
+        onChange={onChange}
+        style={{
+          position: "absolute",
+          top: "40px",
+          left: "15vh",
+          // width: "100px",
+          // height: "20px",
+          textAlign: "center",
+          display: "flex",
+          fontSize: "20px",
+          borderColor: "black",
+          borderRadius: "5px",
+          borderWidth: "1.5px",
+        }}
+      >
         {options.map((option) => (
           <option value={option.value}>{option.label}</option>
         ))}
