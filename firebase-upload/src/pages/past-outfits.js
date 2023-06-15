@@ -53,18 +53,18 @@ const PastOutfits = () => {
                 /* Size */
                 height: 0px;
                 width: 0px;
-                transform: translateY(-1740%);
+                transform: translateY(-830px);
               }
 
               .triangle-buttons__triangle--r {
-                border-color: transparent transparent transparent #d1d5db;
-                border-width: 1.5rem 0 1.5rem 1.5rem;
+                border-color: transparent transparent transparent lightgray;
+                border-width: 1.3rem 0 1.3rem 1.3rem;
                 right: -120px;
               }
 
               .triangle-buttons__triangle--l {
-                border-color: transparent #d1d5db transparent transparent;
-                border-width: 1.5rem 1.5rem 1.5rem 0;
+                border-color: transparent lightgray transparent transparent;
+                border-width: 1.3rem 1.3rem 1.3rem 0;
                 left: -120px;
               }
               
