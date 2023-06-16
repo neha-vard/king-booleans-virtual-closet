@@ -75,7 +75,15 @@ const ClothingUpload = () => {
                 onChange={handleChange}
                 accept="/image/*"
               />
-              <p style={{ marginTop: "90px" }}>(Vertical images look better)</p>
+              <p
+                style={{
+                  marginTop: "90px",
+                  marginLeft: "-40px",
+                  // position: "absolute",
+                }}
+              >
+                (Vertical images look better)
+              </p>
             </div>
           </div>
           <Dropdown
