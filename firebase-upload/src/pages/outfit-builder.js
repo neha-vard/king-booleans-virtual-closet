@@ -1,19 +1,17 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { storage } from "../firebaseConfig";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  listAll,
-} from "firebase/storage";
+import { firestore, storage } from "../firebaseConfig";
+import { ref, getDownloadURL, listAll } from "firebase/storage";
 import Carousel, { CarouselItem } from "../carousel";
+import { addDoc, collection } from "firebase/firestore";
+import "./outfit-builder.css";
 
 const OutfitBuilder = () => {
   const [shirts, setShirts] = useState([]);
   const [pants, setPants] = useState([]);
   const [shoes, setShoes] = useState([]);
   const [hats, setHats] = useState([]);
+  const [pastOutfits, setPastOutfits] = useState([]);
 
   useEffect(() => {
     const shirtsRef = ref(
@@ -64,42 +62,99 @@ const OutfitBuilder = () => {
       });
   }, []);
 
+  const [currentShirtIndex, setCurrentShirtIndex] = useState(0);
+  const [currentPantIndex, setCurrentPantIndex] = useState(0);
+  const [currentShoeIndex, setCurrentShoeIndex] = useState(0);
+  const [currentHatIndex, setCurrentHatIndex] = useState(0);
+
+  const addPastOutfit = () => {
+    const now = new Date();
+    const currentOutfit = {
+      hat: hats[currentHatIndex],
+      shirt: shirts[currentShirtIndex],
+      pant: pants[currentPantIndex],
+      shoe: shoes[currentShoeIndex],
+      date: now.toLocaleString(),
+    };
+    setPastOutfits([...pastOutfits, currentOutfit]);
+
+    const date = now.toLocaleString();
+    // get the month and dat from the date string
+    const month = date.split("/")[0];
+    const day = date.split("/")[1];
+    const year = date.split("/")[2].substring(0, 4);
+
+    addDoc(collection(firestore, "outfits"), {
+      hat: hats[currentHatIndex],
+      shirt: shirts[currentShirtIndex],
+      pant: pants[currentPantIndex],
+      shoe: shoes[currentShoeIndex],
+      date: `${month}-${day}-${year}`,
+    });
+  };
+
   return (
     <div>
-      <h1 style={{textAlign: "center"}}>Outfit Builder</h1>
-      <h3 style={{textAlign: "center", fontWeight: "600", marginBottom: "5%"}}>Build an outfit with items in your closet!</h3>
-      <Carousel>
+      <h1 style={{ textAlign: "center" }}>Outfit Builder</h1>
+      <h3 className="sub-title">Build an outfit with items in your closet!</h3>
+      <Carousel onActiveIndexChange={setCurrentHatIndex}>
         {hats.map((hats, i) => (
-          <CarouselItem>
+          <CarouselItem key={i}>
             {" "}
-            <img src={hats} alt="this" key={i} height="140" />{" "}
+            <img
+              src={hats}
+              alt="this"
+              key={i}
+              className="carousel-image"
+              // width="100%"
+              // maxWidth="200px"
+              // maxHeight="100px"
+            />{" "}
           </CarouselItem>
         ))}
       </Carousel>
-      <Carousel>
+      <Carousel onActiveIndexChange={setCurrentShirtIndex}>
         {shirts.map((shirts, i) => (
-          <CarouselItem>
+          <CarouselItem key={i}>
             {" "}
-            <img src={shirts} alt="this" key={i} height="240" />{" "}
+            <img
+              src={shirts}
+              alt="this"
+              key={i}
+              className="carousel-image"
+            />{" "}
           </CarouselItem>
         ))}
       </Carousel>
-      <Carousel>
+      <Carousel onActiveIndexChange={setCurrentPantIndex}>
         {pants.map((pants, i) => (
-          <CarouselItem>
+          <CarouselItem key={i}>
             {" "}
-            <img src={pants} alt="this" key={i} height="240" />{" "}
+            <img
+              src={pants}
+              alt="this"
+              key={i}
+              className="carousel-image"
+            />{" "}
           </CarouselItem>
         ))}
       </Carousel>
-      <Carousel>
+      <Carousel onActiveIndexChange={setCurrentShoeIndex}>
         {shoes.map((shoes, i) => (
-          <CarouselItem>
+          <CarouselItem key={i}>
             {" "}
-            <img src={shoes} alt="this" key={i} height="160" />{" "}
+            <img
+              src={shoes}
+              alt="this"
+              key={i}
+              className="carousel-image"
+            />{" "}
           </CarouselItem>
         ))}
       </Carousel>
+      <button onClick={addPastOutfit} className="dress-me-button">
+        Dress Me
+      </button>
     </div>
   );
 };

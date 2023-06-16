@@ -75,6 +75,7 @@ import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ClothingUpload from "./pages/clothing-upload";
 import OutfitBuilder from "./pages/outfit-builder";
+import PastOutfits from "./pages/past-outfits";
 
 function App() {
   return (
@@ -84,6 +85,7 @@ function App() {
         <Route exact path="/" element={<OutfitBuilder />} />
         <Route exact path="/outfit-builder" element={<OutfitBuilder />} />
         <Route path="/clothing-upload" element={<ClothingUpload />} />
+        <Route path="/past-outfits" element={<PastOutfits />} />
       </Routes>
     </Router>
   );

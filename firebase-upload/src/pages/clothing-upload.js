@@ -1,12 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { storage } from "../firebaseConfig";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  listAll,
-} from "firebase/storage";
+import { ref, uploadBytesResumable } from "firebase/storage";
 
 const ClothingUpload = () => {
   // State to store uploaded file
@@ -52,8 +47,10 @@ const ClothingUpload = () => {
 
   return (
     <div>
-      <h1 style={{textAlign: "center"}}>Closet Builder</h1>
-      <h3 style={{textAlign: "center", fontWeight: "600"}}>Upload images of your clothing to your virtual closet!</h3>
+      <h1 style={{ textAlign: "center" }}>Closet Builder</h1>
+      <h3 className="sub-title">
+        Upload images of your clothing to your virtual closet!
+      </h3>
       <div style={{ width: "60%", marginLeft: "17%" }}>
         <div
           style={{
@@ -72,11 +69,13 @@ const ClothingUpload = () => {
           <input type="file" onChange={handleChange} accept="/image/*" />
 
           <div style={{ marginLeft: "-6%" }}>
-            <button onClick={handleUpload}>Add this item to your virtual closet!</button>
+            <button onClick={handleUpload}>
+              Add this item to your virtual closet!
+            </button>
           </div>
         </div>
       </div>
-      <p style={{marginTop: "2%", textAlign: "center"}}>{percent} "% done"</p>
+      <p style={{ marginTop: "2%", textAlign: "center" }}>{percent} "% done"</p>
     </div>
   );
 };
