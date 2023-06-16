@@ -74,6 +74,7 @@ const ClothingUpload = () => {
                 onChange={handleChange}
                 accept="/image/*"
               />
+              <p>(Vertical images look better)</p>
             </div>
           </div>
           <Dropdown
