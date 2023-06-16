@@ -1,12 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { storage } from "../firebaseConfig";
-import {
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  listAll,
-} from "firebase/storage";
+import { ref, uploadBytesResumable } from "firebase/storage";
+import "./clothing-upload.css";
 
 const ClothingUpload = () => {
   // State to store uploaded file
@@ -60,49 +56,8 @@ const ClothingUpload = () => {
       <h3 style={{ textAlign: "center", fontWeight: "600" }}>
         Upload images of your clothing to your virtual closet!
       </h3>
-      <div style={{ width: "60%", marginLeft: "17%" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            marginTop: "5%",
-          }}
-        >
-          <style>
-            {`
-              .container {
-                display: flex;
-                align-items: flex-start;
-                justify-content: flex-start;
-                width: 100%;
-                position: absolute;
-                left: 50vh;
-              }
-              input[type="file"] {
-                position: absolute;
-                z-index: -1;
-                top: 10px;
-                left: 18px;
-                font-size: 17px;
-                color: black;
-              }
-              .button-wrap {
-                position: relative;
-              }
-              .button {
-                display: inline-block;
-                padding: 12px 18px;
-                cursor: pointer;
-                border-radius: 5px;
-                background-color: white;
-                font-size: 16px;
-                font-weight: bold;
-                color: black;
-                border: 1.5px solid black;
-
-              }
-              `}
-          </style>
+      <div class="outer-outer-container">
+        <div class="outer-container">
           {/* <input
             type="file"
             onChange={handleChange}
@@ -126,63 +81,16 @@ const ClothingUpload = () => {
             options={options}
             value={value}
             onChange={handleChange2}
-            // style={{ position: "relative", left: "20vh" }}
           />
 
           <div style={{ marginLeft: "-6%" }}>
-            <img
-              src={image}
-              alt=""
-              style={{
-                position: "absolute",
-                width: "250px",
-                top: "25vh",
-                left: "100vh",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                margin: "20px auto",
-                marginBottom: "5%",
-                height: "auto",
-                maxHeight: "300px",
-              }}
-            />
-            <button
-              onClick={handleUpload}
-              style={{
-                position: "absolute",
-                top: "65vh",
-                left: "100vh",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                margin: "20px auto",
-                marginBottom: "5%",
-                borderRadius: "20px",
-                backgroundColor: "white",
-                fontSize: "20px",
-                cursor: "pointer",
-                padding: "10px",
-                width: "250px",
-              }}
-            >
+            <img src={image} alt="" class="image" />
+            <button onClick={handleUpload} class="add-item-button">
               Add this item to your virtual closet!
             </button>
-
             <p
-              style={{
-                position: "absolute",
-                top: "75vh",
-                left: "100vh",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                margin: "20px auto",
-                marginBottom: "5%",
-                textAlign: "center",
-                width: "250px",
-                visibility: percent === 0 ? "hidden" : "visible",
-              }}
+              class="progress"
+              style={{ visibility: percent === 0 ? "hidden" : "visible" }}
             >
               {percent}% done
             </p>
@@ -195,33 +103,10 @@ const ClothingUpload = () => {
 
 const Dropdown = ({ label, value, options, onChange }) => {
   return (
-    <label
-      style={{
-        position: "absolute",
-        left: "45vh",
-        top: "40vh",
-        fontSize: "20px",
-      }}
-    >
+    <label class="dropdown-label">
       {label}
 
-      <select
-        value={value}
-        onChange={onChange}
-        style={{
-          position: "absolute",
-          top: "40px",
-          left: "15vh",
-          // width: "100px",
-          // height: "20px",
-          textAlign: "center",
-          display: "flex",
-          fontSize: "20px",
-          borderColor: "black",
-          borderRadius: "5px",
-          borderWidth: "1.5px",
-        }}
-      >
+      <select value={value} onChange={onChange} class="dropdown-options">
         {options.map((option) => (
           <option value={option.value}>{option.label}</option>
         ))}
