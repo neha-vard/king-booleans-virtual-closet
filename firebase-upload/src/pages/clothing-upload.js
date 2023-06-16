@@ -68,17 +68,59 @@ const ClothingUpload = () => {
             marginTop: "5%",
           }}
         >
-          <input
+          <style>
+            {`
+              .container {
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 100%;
+                position: absolute;
+                left: 50vh;
+              }
+              input[type="file"] {
+                position: absolute;
+                z-index: -1;
+                top: 10px;
+                left: 18px;
+                font-size: 17px;
+                color: black;
+              }
+              .button-wrap {
+                position: relative;
+              }
+              .button {
+                display: inline-block;
+                padding: 12px 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: white;
+                font-size: 16px;
+                font-weight: bold;
+                color: black;
+                border: 1.5px solid black;
+
+              }
+              `}
+          </style>
+          {/* <input
             type="file"
             onChange={handleChange}
             accept="/image/*"
-            style={{
-              position: "absolute",
-              left: "55vh",
-              width: "300px",
-              fontSize: "15px",
-            }}
-          />
+          /> */}
+          <div class="container">
+            <div class="button-wrap">
+              <label class="button" for="upload">
+                Upload File
+              </label>
+              <input
+                id="upload"
+                type="file"
+                onChange={handleChange}
+                accept="/image/*"
+              />
+            </div>
+          </div>
           <Dropdown
             label="What type of clothing are you uploading? "
             options={options}
