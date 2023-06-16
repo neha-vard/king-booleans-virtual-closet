@@ -44,7 +44,7 @@ const PastOutfits = () => {
       <Carousel>
         {hats.map((hat, i) => (
           <CarouselItem key={i}>
-            <div className="outfit">
+            <div className="outfit" style={{ marginBottom: "" }}>
               <style>{`
 
               .triangle-buttons__triangle {
@@ -53,7 +53,7 @@ const PastOutfits = () => {
                 /* Size */
                 height: 0px;
                 width: 0px;
-                transform: translateY(-830px);
+                transform: translateY(-965px);
               }
 
               .triangle-buttons__triangle--r {
@@ -70,26 +70,10 @@ const PastOutfits = () => {
               
             `}</style>
               <p className="date">{dates[i]}</p>
-              <img
-                src={hat}
-                alt="hat"
-                style={{ objectFit: "contain", height: "140px", width: "auto" }}
-              />
-              <img
-                src={shirts[i]}
-                alt="shirt"
-                style={{ objectFit: "contain", height: "240px", width: "auto" }}
-              />
-              <img
-                src={pants[i]}
-                alt="pants"
-                style={{ objectFit: "contain", height: "240px", width: "auto" }}
-              />
-              <img
-                src={shoes[i]}
-                alt="shoes"
-                style={{ objectFit: "contain", height: "160px", width: "auto" }}
-              />
+              <img src={hat} alt="hat" className="past-outfits-image" />
+              <img src={shirts[i]} alt="shirt" className="past-outfits-image" />
+              <img src={pants[i]} alt="pants" className="past-outfits-image" />
+              <img src={shoes[i]} alt="shoes" className="past-outfits-image" />
             </div>
           </CarouselItem>
         ))}
