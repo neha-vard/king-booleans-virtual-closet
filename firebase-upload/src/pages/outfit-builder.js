@@ -101,7 +101,15 @@ const OutfitBuilder = () => {
         {hats.map((hats, i) => (
           <CarouselItem key={i}>
             {" "}
-            <img src={hats} alt="this" key={i} height="140" />{" "}
+            <img
+              src={hats}
+              alt="this"
+              key={i}
+              className="carousel-image"
+              // width="100%"
+              // maxWidth="200px"
+              // maxHeight="100px"
+            />{" "}
           </CarouselItem>
         ))}
       </Carousel>
@@ -109,7 +117,12 @@ const OutfitBuilder = () => {
         {shirts.map((shirts, i) => (
           <CarouselItem key={i}>
             {" "}
-            <img src={shirts} alt="this" key={i} height="240" />{" "}
+            <img
+              src={shirts}
+              alt="this"
+              key={i}
+              className="carousel-image"
+            />{" "}
           </CarouselItem>
         ))}
       </Carousel>
@@ -117,7 +130,12 @@ const OutfitBuilder = () => {
         {pants.map((pants, i) => (
           <CarouselItem key={i}>
             {" "}
-            <img src={pants} alt="this" key={i} height="240" />{" "}
+            <img
+              src={pants}
+              alt="this"
+              key={i}
+              className="carousel-image"
+            />{" "}
           </CarouselItem>
         ))}
       </Carousel>
@@ -125,7 +143,12 @@ const OutfitBuilder = () => {
         {shoes.map((shoes, i) => (
           <CarouselItem key={i}>
             {" "}
-            <img src={shoes} alt="this" key={i} height="160" />{" "}
+            <img
+              src={shoes}
+              alt="this"
+              key={i}
+              className="carousel-image"
+            />{" "}
           </CarouselItem>
         ))}
       </Carousel>

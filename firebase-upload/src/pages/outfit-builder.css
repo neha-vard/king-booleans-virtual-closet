@@ -12,3 +12,8 @@
     padding: 10px;
     width: 200px;
 }
+
+.carousel-image {
+    width: 100%;
+    max-width: 200px;
+}
