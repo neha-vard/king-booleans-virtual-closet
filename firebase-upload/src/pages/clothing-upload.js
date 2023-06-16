@@ -63,6 +63,7 @@ const ClothingUpload = () => {
             onChange={handleChange}
             accept="/image/*"
           /> */}
+          <p className="upload-text">Choose a file</p>
           <div class="container">
             <div class="button-wrap">
               <label class="button" for="upload">
@@ -74,11 +75,11 @@ const ClothingUpload = () => {
                 onChange={handleChange}
                 accept="/image/*"
               />
-              <p>(Vertical images look better)</p>
+              <p style={{ marginTop: "90px" }}>(Vertical images look better)</p>
             </div>
           </div>
           <Dropdown
-            label="What type of clothing are you uploading? "
+            label="Choose clothing type"
             options={options}
             value={value}
             onChange={handleChange2}
