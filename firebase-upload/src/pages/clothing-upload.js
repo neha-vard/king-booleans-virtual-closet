@@ -51,41 +51,72 @@ const ClothingUpload = () => {
   };
 
   return (
+    // <div>
+    //   <h1 style={{ textAlign: "center" }}>Closet Builder</h1>
+    //   <h3 style={{ textAlign: "center", fontWeight: "600" }}>
+    //     Upload images of your clothing to your virtual closet!
+    //   </h3>
+    //   <div class="outer-outer-container">
+    //     <div class="outer-container">
+    //       <p className="upload-text">Choose a file</p>
+    //       <div class="container">
+    //         <div class="button-wrap">
+    //           <label class="button" for="upload">
+    //             Upload File
+    //           </label>
+    //           <input
+    //             id="upload"
+    //             type="file"
+    //             onChange={handleChange}
+    //             accept="/image/*"
+    //           />
+    //           <p
+    //             style={{
+    //               marginTop: "90px",
+    //               marginLeft: "-40px",
+    //             }}
+    //           >
+    //             (Vertical images look better)
+    //           </p>
+    //         </div>
+    //       </div>
+    //       <Dropdown
+    //         label="Choose clothing type"
+    //         options={options}
+    //         value={value}
+    //         onChange={handleChange2}
+    //       />
+
+    //       <div style={{ marginLeft: "-6%" }}>
+    //         <img src={image} alt="" class="image" />
+    //         <button onClick={handleUpload} class="add-item-button">
+    //           Add this item to your virtual closet!
+    //         </button>
+    //         <p
+    //           class="progress"
+    //           style={{ visibility: percent === 0 ? "hidden" : "visible" }}
+    //         >
+    //           {percent}% done
+    //         </p>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
     <div>
       <h1 style={{ textAlign: "center" }}>Closet Builder</h1>
       <h3 style={{ textAlign: "center", fontWeight: "600" }}>
         Upload images of your clothing to your virtual closet!
       </h3>
-      <div class="outer-outer-container">
-        <div class="outer-container">
-          {/* <input
-            type="file"
-            onChange={handleChange}
-            accept="/image/*"
-          /> */}
-          <p className="upload-text">Choose a file</p>
-          <div class="container">
-            <div class="button-wrap">
-              <label class="button" for="upload">
-                Upload File
-              </label>
-              <input
-                id="upload"
-                type="file"
-                onChange={handleChange}
-                accept="/image/*"
-              />
-              <p
-                style={{
-                  marginTop: "90px",
-                  marginLeft: "-40px",
-                  // position: "absolute",
-                }}
-              >
-                (Vertical images look better)
-              </p>
-            </div>
-          </div>
+      <div style={{ width: "60%", marginLeft: "17%" }}>
+        <div
+          style={{
+            marginTop: "5%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            transform: "translate(-30%, -40%)",
+          }}
+        >
           <Dropdown
             label="Choose clothing type"
             options={options}
@@ -93,18 +124,20 @@ const ClothingUpload = () => {
             onChange={handleChange2}
           />
 
-          <div style={{ marginLeft: "-6%" }}>
-            <img src={image} alt="" class="image" />
-            <button onClick={handleUpload} class="add-item-button">
-              Add this item to your virtual closet!
-            </button>
-            <p
-              class="progress"
-              style={{ visibility: percent === 0 ? "hidden" : "visible" }}
-            >
-              {percent}% done
-            </p>
-          </div>
+          <label class="upload-text" for="upload">
+            Choose a file to upload
+          </label>
+          <input type="file" onChange={handleChange} accept="/image/*" />
+          <p> (Vertical images look better)</p>
+        </div>
+        <div style={{ marginLeft: "55%" }}>
+          <img src={image} alt="" class="image" />
+          <button onClick={handleUpload}>
+            Add this item to your virtual closet!
+          </button>
+          <p style={{ marginTop: "2%", textAlign: "center" }}>
+            {percent} "% done"
+          </p>
         </div>
       </div>
     </div>
