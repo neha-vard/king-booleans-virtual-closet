@@ -11,6 +11,11 @@
     cursor: pointer;
     padding: 10px;
     width: 200px;
+    transition: background .2s ease-in-out;
+}
+
+.dress-me-button:hover {
+    background-color: lightgray;
 }
 
 .carousel-image {
