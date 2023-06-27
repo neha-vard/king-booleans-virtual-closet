@@ -36,6 +36,11 @@ const PastOutfits = () => {
       });
   }, []);
 
+  function formatDate(string) {
+    var options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(string).toLocaleDateString([], options);
+  }
+
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Past Outfits</h1>
@@ -46,30 +51,32 @@ const PastOutfits = () => {
           <CarouselItem key={i}>
             <div className="outfit" style={{ marginBottom: "" }}>
               <style>{`
-
               .triangle-buttons__triangle {
                 border-style: solid;
 
                 /* Size */
                 height: 0px;
                 width: 0px;
-                transform: translateY(-965px);
+                transform: translate(0, -1020px);
+                position: relative;
               }
 
               .triangle-buttons__triangle--r {
                 border-color: transparent transparent transparent lightgray;
                 border-width: 1.3rem 0 1.3rem 1.3rem;
-                right: -120px;
+                margin-right: 100px;
+                position: relative;
               }
 
               .triangle-buttons__triangle--l {
                 border-color: transparent lightgray transparent transparent;
                 border-width: 1.3rem 1.3rem 1.3rem 0;
-                left: -120px;
+                margin-left: 100px;
+                position: relative;
               }
               
             `}</style>
-              <p className="date">{dates[i]}</p>
+              <p className="date">{formatDate(dates[i])}</p>
               <img src={hat} alt="hat" className="past-outfits-image" />
               <img src={shirts[i]} alt="shirt" className="past-outfits-image" />
               <img src={pants[i]} alt="pants" className="past-outfits-image" />
