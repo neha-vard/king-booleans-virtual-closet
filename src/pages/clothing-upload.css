@@ -1,0 +1,97 @@
+
+  input[type="file"] {
+    font-size: 17px;
+    color: black;
+    margin-top: 10px;
+    position: relative;
+    /* left: 50%; */
+    /* transform: translateX(20%); */
+    /* margin-bottom: 50px; */
+    /* background-color: red; */
+    width: 260px
+  }
+  input[type=file]::file-selector-button {
+    margin-right: 10px;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-color: black;
+    border-width: 1.5px;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+    font-size: 17px;
+  }
+
+  input[type=file]::file-selector-button:hover {
+    background-color: lightgray;
+  }
+
+  .image {
+    width: 250px;
+    height: auto;
+    max-height: 300px;
+    position: relative;
+    border-radius: 20px;
+    border-color: black;
+    border-width: 1.5px;
+    border-style: solid;
+    margin-top: -150px;
+  }
+
+  .add-item-button {
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    width: 250px;
+    transition: background .2s ease-in-out;
+  }
+
+  .add-item-button:hover {
+    background-color: lightgray;
+  }
+
+  .progress {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    margin-bottom: 5%;
+    text-align: center;
+    width: 250px;
+  }
+
+  .dropdown-options {
+    position: absolute;
+    text-align: center;
+    display: flex;
+    font-size: 20px;
+    border-color: black;
+    border-radius: 5px;
+    border-width: 1.5px;
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+
+  .dropdown-label {
+    position: relative;
+    font-size: 20px;
+    margin-top: 10px; 
+    margin-bottom: 50px;
+    text-decoration: underline;
+    
+  }
+
+  .upload-text {
+    font-size: 20px;
+    position: relative;
+    text-decoration: underline;
+    margin-top: 100px;
+  }

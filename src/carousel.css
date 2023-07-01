@@ -1,0 +1,68 @@
+.carousel {
+  overflow: hidden;
+}
+
+.inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+
+.carousel-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: sans-serif;
+  height: auto;
+  width: 100px;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+}
+
+.indicators > button {
+  position: relative;
+  top: -50px;
+  
+}
+
+.triangle-buttons {
+  /* Center the content */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position:absolute;
+  padding: 0;
+}
+
+.triangle-buttons__triangle {
+  border-style: solid;
+
+  /* Size */
+  height: 0px;
+  width: 0px;
+}
+
+.triangle-buttons__triangle--r {
+  border-color: transparent transparent transparent #d1d5db;
+  border-width: 2.5rem 0 2.5rem 1.5rem;
+  /* position: relative; */
+  position: absolute;
+  right: -200px;
+  transform: translateY(-120%);
+}
+
+.triangle-buttons__triangle--l {
+  border-color: transparent #d1d5db transparent transparent;
+  border-width: 2.5rem 1.5rem 2.5rem 0;
+  position: absolute;
+  left: -200px;
+  transform: translateY(-120%);
+}
