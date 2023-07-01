@@ -99,7 +99,6 @@ const OutfitBuilder = () => {
       <h3 className="sub-title">Build an outfit with items in your closet!</h3>
       <div
         style={{
-          marginTop: "8%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -108,79 +107,63 @@ const OutfitBuilder = () => {
       >
         <label
           style={{
-            marginTop: "-44%",
+            marginTop: "-46%",
           }}
           class="clothing-label"
         >
           Hat
         </label>
-        <label class="clothing-label" style={{ marginTop: "13%" }}>
+        <label
+          class="clothing-label"
+          style={{
+            marginTop: "16%",
+          }}
+        >
           Shirt
         </label>
-        <label class="clothing-label" style={{ marginTop: "13%" }}>
+        <label
+          class="clothing-label"
+          style={{
+            marginTop: "16%",
+          }}
+        >
           Pants
         </label>
-        <label class="clothing-label" style={{ marginTop: "13%" }}>
+        <label
+          class="clothing-label"
+          style={{
+            marginTop: "16%",
+          }}
+        >
           Shoes
         </label>
       </div>
-      <div style={{ position: "relative", marginTop: "-20%" }}>
-        {/* <h1 style={{ textAlign: "center" }}>Outfit Builder</h1>
-        <h3 className="sub-title">
-          Build an outfit with items in your closet!
-        </h3> */}
+      <div style={{ position: "relative", marginTop: "-16%" }}>
         <Carousel onActiveIndexChange={setCurrentHatIndex}>
           {hats.map((hats, i) => (
             <CarouselItem key={i}>
-              {" "}
-              <img
-                src={hats}
-                alt="this"
-                key={i}
-                className="carousel-image"
-                // width="100%"
-                // maxWidth="200px"
-                // maxHeight="100px"
-              />{" "}
+              <img src={hats} alt="this" key={i} className="carousel-image" />
             </CarouselItem>
           ))}
         </Carousel>
         <Carousel onActiveIndexChange={setCurrentShirtIndex}>
           {shirts.map((shirts, i) => (
             <CarouselItem key={i}>
-              {" "}
-              <img
-                src={shirts}
-                alt="this"
-                key={i}
-                className="carousel-image"
-              />{" "}
+              <img src={shirts} alt="this" key={i} className="carousel-image" />
             </CarouselItem>
           ))}
         </Carousel>
         <Carousel onActiveIndexChange={setCurrentPantIndex}>
           {pants.map((pants, i) => (
             <CarouselItem key={i}>
-              {" "}
-              <img
-                src={pants}
-                alt="this"
-                key={i}
-                className="carousel-image"
-              />{" "}
+              <img src={pants} alt="this" key={i} className="carousel-image" />
             </CarouselItem>
           ))}
         </Carousel>
         <Carousel onActiveIndexChange={setCurrentShoeIndex}>
           {shoes.map((shoes, i) => (
             <CarouselItem key={i}>
-              {" "}
-              <img
-                src={shoes}
-                alt="this"
-                key={i}
-                className="carousel-image"
-              />{" "}
+              <img src={shoes} alt="this" key={i} className="carousel-image" />
             </CarouselItem>
           ))}
         </Carousel>
