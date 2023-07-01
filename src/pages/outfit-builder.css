@@ -26,12 +26,7 @@
     border: 2px solid black;
     /* height: 300px; */
     max-height: 300px;
-
-    /* center vertically */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-
+    box-sizing: border-box;
 }
 
 .clothing-label {

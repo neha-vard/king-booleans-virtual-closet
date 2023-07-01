@@ -45,21 +45,18 @@ const PastOutfits = () => {
     <div>
       <h1 style={{ textAlign: "center" }}>Past Outfits</h1>
       <h3 className="sub-title">View some of your past outfits!</h3>
+      <div style={{ marginTop: "-5%" }}>
+        <Carousel>
+          {hats.map((hat, i) => (
+            <CarouselItem key={i}>
+              <div className="outfit" style={{ marginBottom: "0px" }}>
+                <style>{`
+                .indicators > button {
+                  margin-bottom: -150%;
+                  transform: translateY(-101%);
+                  
 
-      <Carousel>
-        {hats.map((hat, i) => (
-          <CarouselItem key={i}>
-            <div className="outfit" style={{ marginBottom: "" }}>
-              <style>{`
-              .triangle-buttons__triangle {
-                border-style: solid;
-
-                /* Size */
-                height: 0px;
-                width: 0px;
-                transform: translate(0, -1020px);
-                position: relative;
-              }
+                }
 
               .triangle-buttons__triangle--r {
                 border-color: transparent transparent transparent lightgray;
@@ -76,15 +73,28 @@ const PastOutfits = () => {
               }
               
             `}</style>
-              <p className="date">{formatDate(dates[i])}</p>
-              <img src={hat} alt="hat" className="past-outfits-image" />
-              <img src={shirts[i]} alt="shirt" className="past-outfits-image" />
-              <img src={pants[i]} alt="pants" className="past-outfits-image" />
-              <img src={shoes[i]} alt="shoes" className="past-outfits-image" />
-            </div>
-          </CarouselItem>
-        ))}
-      </Carousel>
+                <p className="date">{formatDate(dates[i])}</p>
+                <img src={hat} alt="hat" className="past-outfits-image" />
+                <img
+                  src={shirts[i]}
+                  alt="shirt"
+                  className="past-outfits-image"
+                />
+                <img
+                  src={pants[i]}
+                  alt="pants"
+                  className="past-outfits-image"
+                />
+                <img
+                  src={shoes[i]}
+                  alt="shoes"
+                  className="past-outfits-image"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 };

@@ -79,7 +79,6 @@ const OutfitBuilder = () => {
     setPastOutfits([...pastOutfits, currentOutfit]);
 
     const date = now.toLocaleString();
-    // get the month and dat from the date string
     const month = date.split("/")[0];
     const day = date.split("/")[1];
     const year = date.split("/")[2].substring(0, 4);
