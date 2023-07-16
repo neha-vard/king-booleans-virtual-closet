@@ -52,24 +52,22 @@ const PastOutfits = () => {
               <div className="outfit" style={{ marginBottom: "0px" }}>
                 <style>{`
                 .indicators > button {
-                  margin-bottom: -150%;
-                  transform: translateY(-101%);
-                  
+                  position: relative;
+                  // transform: translateY(-2900%);
+                  top: -1220px;
+                  // z-index: 1;
+                  // background-color: red;
 
                 }
 
               .triangle-buttons__triangle--r {
                 border-color: transparent transparent transparent lightgray;
                 border-width: 1.3rem 0 1.3rem 1.3rem;
-                margin-right: 100px;
-                position: relative;
               }
 
               .triangle-buttons__triangle--l {
                 border-color: transparent lightgray transparent transparent;
                 border-width: 1.3rem 1.3rem 1.3rem 0;
-                margin-left: 100px;
-                position: relative;
               }
               
             `}</style>
