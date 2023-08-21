@@ -1,4 +1,4 @@
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Carousel, { CarouselItem } from "../carousel";
 import { firestore } from "../firebaseConfig";
@@ -15,7 +15,7 @@ const PastOutfits = () => {
   useEffect(() => {
     // loop through all the documents in the outfits collection and add them to the outfits array
     const outfitsCollection = collection(firestore, "outfits");
-    const q = query(outfitsCollection);
+    const q = query(outfitsCollection, orderBy("timeStamp", "asc"));
     getDocs(q)
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {

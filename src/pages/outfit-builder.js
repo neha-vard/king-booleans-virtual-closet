@@ -89,6 +89,7 @@ const OutfitBuilder = () => {
       pant: pants[currentPantIndex],
       shoe: shoes[currentShoeIndex],
       date: `${month}-${day}-${year}`,
+      timeStamp: now,
     });
   };
 
